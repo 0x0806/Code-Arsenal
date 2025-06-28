@@ -1,0 +1,425 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CODE ARSENAL - Elite Programming Education</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Matrix Rain Background -->
+    <div id="matrix-rain"></div>
+    
+    <!-- Floating 3D Elements -->
+    <div class="floating-elements">
+        <div class="floating-cube"></div>
+        <div class="floating-sphere"></div>
+        <div class="floating-pyramid"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Header -->
+        <header class="glass-header">
+            <div class="logo-container">
+                <i class="fas fa-code"></i>
+                <h1>CODE ARSENAL</h1>
+                <span class="dev-tag">by 0X0806</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="#dashboard" class="nav-item active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <a href="#challenges" class="nav-item"><i class="fas fa-trophy"></i> Challenges</a>
+                <a href="#leaderboard" class="nav-item"><i class="fas fa-crown"></i> Leaderboard</a>
+                <a href="#terminal" class="nav-item"><i class="fas fa-terminal"></i> Terminal</a>
+                <a href="#ai-assistant" class="nav-item"><i class="fas fa-robot"></i> AI Assistant</a>
+            </nav>
+            <div class="user-stats">
+                <div class="xp-display">
+                    <i class="fas fa-star"></i>
+                    <span id="user-xp">0 XP</span>
+                </div>
+                <div class="level-display">
+                    <i class="fas fa-level-up-alt"></i>
+                    <span id="user-level">Level 1</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="content-section active">
+            <div class="dashboard-grid">
+                <!-- Profile Card -->
+                <div class="glass-card profile-card">
+                    <div class="profile-header">
+                        <div class="avatar">
+                            <i class="fas fa-user-ninja"></i>
+                        </div>
+                        <div class="profile-info">
+                            <h3>NewCoder</h3>
+                            <p>Rank: Rookie</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0/100 XP to Level 2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="glass-card stats-card">
+                    <h3><i class="fas fa-chart-line"></i> Performance Stats</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-number">0</span>
+                            <span class="stat-label">Challenges Solved</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">0</span>
+                            <span class="stat-label">Current Streak</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">0%</span>
+                            <span class="stat-label">Success Rate</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">0</span>
+                            <span class="stat-label">Languages Mastered</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievements -->
+                <div class="glass-card achievements-card">
+                    <h3><i class="fas fa-medal"></i> Recent Achievements</h3>
+                    <div class="achievements-list">
+                        <div class="achievement-item unlocked">
+                            <i class="fas fa-fire"></i>
+                            <span>Speed Demon</span>
+                        </div>
+                        <div class="achievement-item unlocked">
+                            <i class="fas fa-brain"></i>
+                            <span>Algorithm Master</span>
+                        </div>
+                        <div class="achievement-item unlocked">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Security Expert</span>
+                        </div>
+                        <div class="achievement-item locked">
+                            <i class="fas fa-lock"></i>
+                            <span>Code Ninja</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Daily Challenge -->
+                <div class="glass-card challenge-card">
+                    <h3><i class="fas fa-calendar-day"></i> Daily Challenge</h3>
+                    <div class="challenge-preview">
+                        <h4>Two Sum Problem</h4>
+                        <p>Find two numbers that add up to target</p>
+                        <div class="challenge-meta">
+                            <span class="difficulty medium">Medium</span>
+                            <span class="xp-reward">+50 XP</span>
+                        </div>
+                        <button class="btn-primary">Start Challenge</button>
+                    </div>
+                </div>
+
+                <!-- Skill Progress -->
+                <div class="glass-card dashboard-card-enhanced">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <div class="card-icon"><i class="fas fa-brain"></i></div>
+                            Skill Mastery
+                        </h3>
+                    </div>
+                    <div class="skill-chart">
+                        <div class="skill-item" data-skill="algorithms">
+                            <span class="skill-name">Algorithms</span>
+                            <div class="skill-progress-container">
+                                <div class="skill-progress" style="width: 85%">85</div>
+                            </div>
+                            <span class="skill-value">85/100</span>
+                        </div>
+                        <div class="skill-item" data-skill="dataStructures">
+                            <span class="skill-name">Data Structures</span>
+                            <div class="skill-progress-container">
+                                <div class="skill-progress" style="width: 78%">78</div>
+                            </div>
+                            <span class="skill-value">78/100</span>
+                        </div>
+                        <div class="skill-item" data-skill="webDev">
+                            <span class="skill-name">Web Dev</span>
+                            <div class="skill-progress-container">
+                                <div class="skill-progress" style="width: 92%">92</div>
+                            </div>
+                            <span class="skill-value">92/100</span>
+                        </div>
+                        <div class="skill-item" data-skill="cybersecurity">
+                            <span class="skill-name">Cybersecurity</span>
+                            <div class="skill-progress-container">
+                                <div class="skill-progress" style="width: 67%">67</div>
+                            </div>
+                            <span class="skill-value">67/100</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Statistics -->
+                <div class="glass-card dashboard-card-enhanced">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <div class="card-icon"><i class="fas fa-chart-bar"></i></div>
+                            Detailed Stats
+                        </h3>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-number" id="weeklyXP">450</span>
+                            <span class="stat-label">Weekly XP</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="monthlyXP">1,200</span>
+                            <span class="stat-label">Monthly XP</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="maxStreak">23</span>
+                            <span class="stat-label">Max Streak</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="fastestSolve">2.5m</span>
+                            <span class="stat-label">Fastest Solve</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievement Progress -->
+                <div class="glass-card dashboard-card-enhanced">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <div class="card-icon"><i class="fas fa-trophy"></i></div>
+                            Achievement Progress
+                        </h3>
+                    </div>
+                    <div class="progress-indicator">
+                        <div class="progress-header">
+                            <span class="progress-title">Overall Progress</span>
+                            <span class="progress-percentage">67%</span>
+                        </div>
+                        <div class="progress-bar-enhanced">
+                            <div class="progress-fill-enhanced" style="width: 67%"></div>
+                        </div>
+                    </div>
+                    <div class="achievements-list">
+                        <div class="achievement-item unlocked">
+                            <i class="fas fa-fire"></i>
+                            <span>Speed Demon</span>
+                        </div>
+                        <div class="achievement-item unlocked">
+                            <i class="fas fa-brain"></i>
+                            <span>Algorithm Master</span>
+                        </div>
+                        <div class="achievement-item unlocked">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Security Expert</span>
+                        </div>
+                        <div class="achievement-item locked">
+                            <i class="fas fa-crown"></i>
+                            <span>Code Ninja</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Challenges Section -->
+        <section id="challenges" class="content-section">
+            <div class="challenges-header">
+                <h2><i class="fas fa-trophy"></i> Coding Challenges</h2>
+                <div class="challenge-filters">
+                    <select id="category-filter">
+                        <option value="all">All Categories</option>
+                        <option value="algorithms">Algorithms</option>
+                        <option value="data-structures">Data Structures</option>
+                        <option value="dynamic-programming">Dynamic Programming</option>
+                        <option value="machine-learning">Machine Learning</option>
+                        <option value="web-development">Web Development</option>
+                        <option value="databases">Databases</option>
+                        <option value="cybersecurity">Cybersecurity</option>
+                        <option value="mobile-development">Mobile Development</option>
+                    </select>
+                    <select id="difficulty-filter">
+                        <option value="all">All Levels</option>
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                        <option value="expert">Expert</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="challenges-grid" id="challenges-grid">
+                <!-- Challenges will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Leaderboard Section -->
+        <section id="leaderboard" class="content-section">
+            <div class="leaderboard-container">
+                <h2><i class="fas fa-crown"></i> Global Leaderboard</h2>
+                <div class="leaderboard-tabs">
+                    <button class="tab-btn active" data-tab="global">Global</button>
+                    <button class="tab-btn" data-tab="weekly">Weekly</button>
+                    <button class="tab-btn" data-tab="monthly">Monthly</button>
+                </div>
+                <div class="leaderboard-list" id="leaderboard-list">
+                    <!-- Leaderboard entries will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Terminal Section -->
+        <section id="terminal" class="content-section">
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <div class="terminal-controls">
+                        <span class="control-btn close"></span>
+                        <span class="control-btn minimize"></span>
+                        <span class="control-btn maximize"></span>
+                    </div>
+                    <h3>CODE ARSENAL Terminal</h3>
+                </div>
+                <div class="terminal-body" id="terminal-body">
+                    <div class="terminal-line">
+                        <span class="prompt">coder@arsenal:~$</span>
+                        <span class="welcome-text">Welcome to CODE ARSENAL Terminal v2.0</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="prompt">coder@arsenal:~$</span>
+                        <span class="help-text">Type 'help' for available commands</span>
+                    </div>
+                </div>
+                <div class="terminal-input-line">
+                    <span class="prompt">coder@arsenal:~$</span>
+                    <input type="text" id="terminal-input" placeholder="Enter command..." autocomplete="off">
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Assistant Section -->
+        <section id="ai-assistant" class="content-section">
+            <div class="ai-assistant-container">
+                <div class="ai-header">
+                    <div class="ai-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="ai-info">
+                        <h3>ARSENAL AI v2.0</h3>
+                        <p>Advanced Contextual Coding Mentor</p>
+                        <span class="status online">🟢 Online - Enhanced Mode</span>
+                    </div>
+                    <div class="ai-features">
+                        <span class="feature-badge">🧠 Context Aware</span>
+                        <span class="feature-badge">🔍 Code Analysis</span>
+                        <span class="feature-badge">🐛 Debug Expert</span>
+                    </div>
+                </div>
+                
+                <div class="chat-container" id="chat-container">
+                    <div class="chat-message ai-message">
+                        <div class="message-avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="message-content">
+                            <p>🚀 <strong>Welcome to ARSENAL AI v2.0!</strong></p>
+                            <p>I'm your advanced coding mentor with cutting-edge capabilities:</p>
+                            <div class="ai-capabilities">
+                                <div class="capability-grid">
+                                    <div class="capability-item">
+                                        <i class="fas fa-search-plus"></i>
+                                        <span>Deep Code Analysis</span>
+                                    </div>
+                                    <div class="capability-item">
+                                        <i class="fas fa-bug"></i>
+                                        <span>Advanced Debugging</span>
+                                    </div>
+                                    <div class="capability-item">
+                                        <i class="fas fa-shield-alt"></i>
+                                        <span>Security Assessment</span>
+                                    </div>
+                                    <div class="capability-item">
+                                        <i class="fas fa-rocket"></i>
+                                        <span>Performance Optimization</span>
+                                    </div>
+                                    <div class="capability-item">
+                                        <i class="fas fa-brain"></i>
+                                        <span>Algorithm Expertise</span>
+                                    </div>
+                                    <div class="capability-item">
+                                        <i class="fas fa-graduation-cap"></i>
+                                        <span>Personalized Learning</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>💡 <strong>Try asking:</strong></p>
+                            <ul class="ai-suggestions">
+                                <li>"Review my code for performance issues"</li>
+                                <li>"Debug this error for me"</li>
+                                <li>"Explain binary search algorithm"</li>
+                                <li>"What should I learn next?"</li>
+                                <li>"Help me optimize this function"</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chat-input-container">
+                    <div class="input-features">
+                        <button class="feature-btn" title="Code Analysis"><i class="fas fa-code"></i></button>
+                        <button class="feature-btn" title="Debug Mode"><i class="fas fa-bug"></i></button>
+                        <button class="feature-btn" title="Performance"><i class="fas fa-tachometer-alt"></i></button>
+                        <button class="feature-btn" title="Security"><i class="fas fa-shield-alt"></i></button>
+                    </div>
+                    <input type="text" id="chat-input" placeholder="Ask me anything about coding, debugging, optimization...">
+                    <button id="send-chat"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Code Editor Modal -->
+        <div id="code-editor-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="challenge-title">Challenge Title</h3>
+                    <span class="close-modal">&times;</span>
+                </div>
+                <div class="editor-container">
+                    <div class="editor-tabs">
+                        <button class="tab-btn active" data-lang="javascript">JavaScript</button>
+                        <button class="tab-btn" data-lang="python">Python</button>
+                        <button class="tab-btn" data-lang="java">Java</button>
+                        <button class="tab-btn" data-lang="cpp">C++</button>
+                    </div>
+                    <textarea id="code-editor" placeholder="// Write your code here..."></textarea>
+                    <div class="editor-controls">
+                        <button id="run-code" class="btn-primary">Run Code</button>
+                        <button id="submit-code" class="btn-success">Submit Solution</button>
+                        <button id="get-hint" class="btn-secondary">Get Hint</button>
+                    </div>
+                </div>
+                <div class="test-results" id="test-results">
+                    <!-- Test results will appear here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Notification Container -->
+        <div id="notification-container"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
