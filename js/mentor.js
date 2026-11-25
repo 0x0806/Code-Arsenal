@@ -219,6 +219,7 @@
 
   function review(code, lang, problem) {
     if (typeof code !== 'string' || !code.trim()) return { text: 'There is no code in the editor to review. Write something and ask again.', findings: 0 };
+    if (code.length > 8000) return { text: 'That draft is too long to review here. Paste a function of up to 8,000 characters and ask again.', findings: 0 };
     var raw = code.length > MAX_CODE ? code.slice(0, MAX_CODE) : code;
     raw = raw.replace(/\r\n?/g, '\n');
     var f = lang === 'py' ? reviewPy(raw, problem) : reviewJs(raw, problem);

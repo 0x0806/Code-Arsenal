@@ -366,7 +366,7 @@
   function tableHTML(f, list) {
     var s = store.get();
     if (!list.length) {
-      return '<div class="empty" data-testid="empty-results">' + ic('search', { size: 28 }) + '<h3>No challenges match these filters</h3><p>Try a shorter search or remove a filter.</p><button type="button" class="btn" data-action="ch-clear">Clear filters</button></div>';
+      return '<div class="empty" data-testid="empty-results">' + ic('search', { size: 28 }) + '<h2>No challenges match these filters</h2><p>Try a shorter search or remove a filter.</p><button type="button" class="btn" data-action="ch-clear">Clear filters</button></div>';
     }
     var head = COLS.map(function (c) {
       var sorted = f.sort === c.k, ariaSort = sorted ? (f.dir === 'desc' ? 'descending' : 'ascending') : 'none';
@@ -882,6 +882,8 @@
     store.update(function (s) { s.settings.theme = nt; }); applyTheme(); updateStatus(); announce('Theme: ' + nt + '.');
   };
   document.addEventListener('click', function (e) {
+    var sk = e.target.closest ? e.target.closest('a.skip') : null;
+    if (sk) { e.preventDefault(); view.focus(); return; } // a hash link would be read as an unknown route
     var t = e.target.closest ? e.target.closest('[data-action]') : null;
     if (!t || t.disabled) return;
     var fn = actions[t.getAttribute('data-action')];

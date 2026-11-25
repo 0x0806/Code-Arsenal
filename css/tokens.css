@@ -1,7 +1,7 @@
 /* Design tokens: see DESIGN.md. Light default, dark via system or [data-theme]. */
 :root {
   --paper: #F2EFE7; --surface: #FAF8F3; --surface-2: #ECE8DC; --ink: #1B1A17; --muted: #5E5A4F; --line: #D9D4C5;
-  --signal: #E4572E; --signal-ink: #A63312; --pass: #1B7A4F; --pass-bg: #DDEFE5; --fail: #B42318; --fail-bg: #F8E1DE;
+  --signal: #E4572E; --signal-ink: #A63312; --pass: #166D45; --pass-bg: #DDEFE5; --fail: #B42318; --fail-bg: #F8E1DE;
   --warn: #8A5A00; --warn-bg: #F6E8C8;
   --code-bg: #14130F; --code-ink: #EDE9DF; --code-muted: #8F8A7C; --code-line: #2A2822;
   --on-ink: #FAF8F3; --focus: #1B1A17;

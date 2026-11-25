@@ -167,7 +167,7 @@ kbd { background: var(--surface-2); border: 1px solid var(--line); border-radius
 .legend i.l3 { background: color-mix(in srgb, var(--signal) 80%, var(--surface)); border-color: transparent; }
 .legend i.l4 { background: var(--signal); border-color: transparent; }
 .empty { padding: var(--s-6) var(--s-4); text-align: center; color: var(--muted); display: flex; flex-direction: column; align-items: center; gap: var(--s-3); }
-.empty h3 { color: var(--ink); font-size: 16px; }
+.empty h2, .empty h3 { color: var(--ink); font-size: 16px; }
 .empty p { max-width: 46ch; }
 
 /* ---------- challenges ---------- */
@@ -449,3 +449,12 @@ dialog.dlg .actions { display: flex; justify-content: flex-end; gap: var(--s-2);
   .tbl th a, .tbl td a { min-height: 44px; display: inline-flex; align-items: center; }
 }
 @media (max-width: 420px) { .tab .ic { display: none; } .tab { padding: 8px 8px; } }
+
+/* Touch targets: the tablet range (721-768px) keeps the desktop layout but needs the same 44px minimums. */
+@media (max-width: 768px) {
+  .btn, .btn-sm, .input, .select, .seg button, .tab, .nav-link, .brand, .tests summary, .tbl th .sortbtn, .term-in input { min-height: 44px; }
+  .icon-btn { min-width: 44px; min-height: 44px; }
+  .brand { display: inline-flex; align-items: center; min-width: 44px; }
+  .mastery a, .recent a, .ws-head .back, .chat-ctx a, .tbl th a, .tbl td a { min-height: 44px; display: inline-flex; align-items: center; }
+  .nav-link { min-width: 44px; }
+}

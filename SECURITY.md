@@ -16,3 +16,14 @@ Progress is kept in your browser's `localStorage`.
 
 ## Reporting
 Open a private security advisory on the GitHub repository or an issue without exploit details.
+
+## Known limits (honest list)
+- **Client-side trust.** There is no server, so the challenge bank (including hidden tests and reference
+  solutions) ships to the browser, and progress in `localStorage` can be edited. XP and ranks are for the
+  learner's own motivation, not a competitive or verified record. Do not use them as proof of skill.
+- **Framing.** A `<meta>` CSP cannot send `frame-ancestors`. Deploy behind a host that can set
+  `Content-Security-Policy: frame-ancestors 'none'` for clickjacking protection (GitHub Pages cannot).
+- **Sandbox egress.** The sandbox CSP allows `cdn.jsdelivr.net` so Pyodide can load; learner code could
+  make requests to that one host.
+- **Resource exhaustion.** Memory-heavy code is stopped only by the parent timeout destroying the sandbox.
+- **Dependencies.** `npm audit` is run in CI (`--audit-level=high`).
