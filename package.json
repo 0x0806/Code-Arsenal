@@ -1,23 +1,30 @@
 {
   "name": "code-arsenal",
-  "version": "1.0.0",
-  "description": "",
-  "main": "script.js",
+  "version": "2.0.0",
+  "description": "Browser-based programming practice with real tests, run in a sandbox.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "verify": "node scripts/verify-problems.js",
+    "test:unit": "node --test tests/unit/",
+    "test:e2e": "playwright test",
+    "test": "npm run verify && npm run test:unit && npm run test:e2e",
+    "serve": "python3 -m http.server 4173"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/0x0806/Code-Arsenal.git"
   },
-  "keywords": [],
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/0x0806/Code-Arsenal/issues"
   },
   "homepage": "https://github.com/0x0806/Code-Arsenal#readme",
   "devDependencies": {
     "@axe-core/playwright": "^4.14.1",
-    "@playwright/test": "^1.65.1"
-  }
+    "@fontsource/bricolage-grotesque": "^5.3.0",
+    "@fontsource/instrument-sans": "^5.3.0",
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "@playwright/test": "^1.65.1",
+    "codemirror": "^5.65.16"
+  },
+  "private": true,
+  "license": "MIT"
 }

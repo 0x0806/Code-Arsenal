@@ -1,0 +1,18 @@
+/* Code Arsenal CodeMirror 5 theme: apply with theme: "arsenal". Colours come from css/tokens.css. */
+.cm-s-arsenal.CodeMirror { background: var(--code-bg); color: var(--code-ink); font-family: var(--font-mono); font-size: 14px; line-height: 1.55; height: 100%; }
+.cm-s-arsenal .CodeMirror-gutters { background: var(--code-bg); border-right: 1px solid var(--code-line); }
+.cm-s-arsenal .CodeMirror-linenumber { color: var(--code-muted); }
+.cm-s-arsenal .CodeMirror-cursor { border-left: 2px solid var(--code-ink); }
+.cm-s-arsenal .CodeMirror-selected, .cm-s-arsenal.CodeMirror-focused .CodeMirror-selected { background: rgba(228, 87, 46, .32); }
+.cm-s-arsenal .CodeMirror-activeline-background { background: var(--code-line); }
+.cm-s-arsenal .CodeMirror-matchingbracket { color: var(--code-ink) !important; outline: 1px solid var(--signal); background: transparent; }
+.cm-s-arsenal .CodeMirror-nonmatchingbracket { color: var(--fail) !important; }
+.cm-s-arsenal .cm-comment { color: var(--code-muted); font-style: italic; }
+.cm-s-arsenal .cm-keyword, .cm-s-arsenal .cm-atom { color: #F2764F; }
+.cm-s-arsenal .cm-def, .cm-s-arsenal .cm-variable-2, .cm-s-arsenal .cm-property { color: #E8B54A; }
+.cm-s-arsenal .cm-string, .cm-s-arsenal .cm-string-2 { color: #7FD1A4; }
+.cm-s-arsenal .cm-number { color: #8CC4E8; }
+.cm-s-arsenal .cm-operator, .cm-s-arsenal .cm-meta { color: var(--code-ink); }
+.cm-s-arsenal .cm-builtin, .cm-s-arsenal .cm-variable-3, .cm-s-arsenal .cm-type { color: #C9B8E8; }
+.cm-s-arsenal .cm-error { color: var(--fail); }
+.cm-s-arsenal .CodeMirror-scroll { scrollbar-color: var(--code-line) transparent; }

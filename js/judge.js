@@ -139,37 +139,50 @@
 
   var PYODIDE_URL = 'https://cdn.jsdelivr.net/pyodide/v0.26.4/full/';
 
+  /* Worker side hardening: no network or nested workers, and the replacements cannot be deleted or reassigned. */
   function lockdown() {
-    ['fetch', 'XMLHttpRequest', 'WebSocket', 'EventSource', 'importScripts', 'indexedDB', 'caches', 'BroadcastChannel'].forEach(function (k) {
-      try { self[k] = undefined; } catch (e) { /* ignore */ }
+    ['fetch', 'XMLHttpRequest', 'WebSocket', 'EventSource', 'importScripts', 'indexedDB', 'caches', 'BroadcastChannel', 'Worker', 'SharedWorker', 'WebTransport'].forEach(function (k) {
+      for (var o = self; o && o !== Object.prototype; o = Object.getPrototypeOf(o)) {
+        try { if (Object.prototype.hasOwnProperty.call(o, k)) Object.defineProperty(o, k, { value: undefined, writable: false, configurable: false }); } catch (e) { /* ignore */ }
+      }
     });
   }
+
+  /*
+   * Result integrity. Workers never see `expected` values (the sandbox strips them) and never score.
+   * Each run message carries a one-time `nonce` that is held only in a closure local to the bootstrap, which also
+   * captured postMessage before any user code ran. A "result" without the matching nonce is ignored by the sandbox,
+   * so user code calling self.postMessage({type:"result"}) cannot forge a verdict. The whole bootstrap lives in an IIFE
+   * so helper functions are not reachable as worker globals.
+   */
 
   /** Source of the JavaScript judging worker. */
   function jsWorkerSource() {
     return [
+      '(function () {',
       '"use strict";',
-      'var deepEqual = ' + deepEqual.toString() + ';',
       'var normalize = ' + normalize.toString() + ';',
       'var judgeJS = ' + judgeJS.toString() + ';',
-      'var scoreResults = ' + scoreResults.toString() + ';',
       'var lockdown = ' + lockdown.toString() + ';',
       'var post = self.postMessage.bind(self);',
       'self.onmessage = function (e) {',
       '  var d = e.data;',
+      '  var nonce = d.nonce;',
+      '  self.onmessage = null;',
       '  lockdown();',
       '  var raw = judgeJS(d.code, d.spec, { onTest: function (i) { post({ type: "progress", index: i }); } });',
-      '  post({ type: "result", result: scoreResults(d.spec, raw) });',
-      '};'
+      '  post({ type: "result", nonce: nonce, raw: raw });',
+      '};',
+      '})();'
     ].join('\n');
   }
 
-  /** Source of the Pyodide worker. Loads the runtime once and then serves many runs. */
+  /** Source of the Pyodide worker. Loads the runtime once and then serves many runs (each with its own nonce). */
   function pyWorkerSource() {
     return [
+      '(function () {',
       '"use strict";',
-      'var deepEqual = ' + deepEqual.toString() + ';',
-      'var scoreResults = ' + scoreResults.toString() + ';',
+      'var lockdown = ' + lockdown.toString() + ';',
       'var HARNESS = ' + JSON.stringify(PY_HARNESS) + ';',
       'var post = self.postMessage.bind(self);',
       'var pyodide = null;',
@@ -177,21 +190,26 @@
       '  importScripts(' + JSON.stringify(PYODIDE_URL + 'pyodide.js') + ');',
       '  pyodide = await loadPyodide({ indexURL: ' + JSON.stringify(PYODIDE_URL) + ' });',
       '  pyodide.runPython(HARNESS);',
+      '  lockdown();',
       '  post({ type: "ready" });',
       '})().catch(function (e) { post({ type: "load_error", message: String(e && e.message || e) }); });',
       'self.onmessage = async function (e) {',
+      '  var d = e.data;',
+      '  var nonce = d.nonce;',
       '  await ready;',
       '  if (!pyodide) return;',
-      '  var d = e.data;',
+      '  var raw;',
       '  try {',
       '    var run = pyodide.globals.get("__ca_run");',
       '    var json = run(d.code, d.spec.pyFn, JSON.stringify(d.spec.tests.map(function (t) { return { args: t.args }; })));',
       '    run.destroy();',
-      '    post({ type: "result", result: scoreResults(d.spec, JSON.parse(json)) });',
+      '    raw = JSON.parse(json);',
       '  } catch (err) {',
-      '    post({ type: "result", result: scoreResults(d.spec, { status: "error", message: String(err && err.message || err), logs: [] }) });',
+      '    raw = { status: "error", message: String(err && err.message || err), logs: [] };',
       '  }',
-      '};'
+      '  post({ type: "result", nonce: nonce, raw: raw });',
+      '};',
+      '})();'
     ].join('\n');
   }
 
