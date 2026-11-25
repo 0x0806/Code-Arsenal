@@ -1,0 +1,31 @@
+/* Design tokens: see DESIGN.md. Light default, dark via system or [data-theme]. */
+:root {
+  --paper: #F2EFE7; --surface: #FAF8F3; --surface-2: #ECE8DC; --ink: #1B1A17; --muted: #5E5A4F; --line: #D9D4C5;
+  --signal: #E4572E; --signal-ink: #A63312; --pass: #1B7A4F; --pass-bg: #DDEFE5; --fail: #B42318; --fail-bg: #F8E1DE;
+  --warn: #8A5A00; --warn-bg: #F6E8C8;
+  --code-bg: #14130F; --code-ink: #EDE9DF; --code-muted: #8F8A7C; --code-line: #2A2822;
+  --on-ink: #FAF8F3; --focus: #1B1A17;
+  --font-display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Instrument Sans', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --r-1: 4px; --r-2: 8px; --r-3: 12px;
+  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 24px; --s-6: 32px; --s-7: 48px; --s-8: 72px;
+  --shadow-1: 0 1px 0 rgba(27,26,23,.06), 0 1px 2px rgba(27,26,23,.08);
+  --shadow-2: 0 8px 24px -8px rgba(27,26,23,.22), 0 2px 6px rgba(27,26,23,.08);
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #121110; --surface: #1A1917; --surface-2: #232220; --ink: #EDE9DF; --muted: #A39E91; --line: #2E2C27;
+    --signal: #F2764F; --signal-ink: #F2764F; --pass: #4CC38A; --pass-bg: #12301F; --fail: #FF8A7E; --fail-bg: #3A1814;
+    --warn: #E8B54A; --warn-bg: #3A2D0E; --code-bg: #0C0B09; --code-line: #24221D; --on-ink: #121110; --focus: #EDE9DF;
+    --shadow-1: 0 1px 0 rgba(0,0,0,.4); --shadow-2: 0 8px 24px -8px rgba(0,0,0,.6); color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #121110; --surface: #1A1917; --surface-2: #232220; --ink: #EDE9DF; --muted: #A39E91; --line: #2E2C27;
+  --signal: #F2764F; --signal-ink: #F2764F; --pass: #4CC38A; --pass-bg: #12301F; --fail: #FF8A7E; --fail-bg: #3A1814;
+  --warn: #E8B54A; --warn-bg: #3A2D0E; --code-bg: #0C0B09; --code-line: #24221D; --on-ink: #121110; --focus: #EDE9DF;
+  --shadow-1: 0 1px 0 rgba(0,0,0,.4); --shadow-2: 0 8px 24px -8px rgba(0,0,0,.6); color-scheme: dark;
+}
